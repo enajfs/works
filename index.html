@@ -1,834 +1,1535 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Works — Seño Digital Studio</title>
-  <meta name="description" content="Portfolio of Baby Jane Seño — Virtual Assistance, Design, Video Editing, and Web Design work." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-  <style>
-    /* ── TOKENS ── */
-    :root {
-      --burgundy: #800020;
-      --burgundy-deep: #600018;
-      --burgundy-glow: rgba(128,0,32,0.12);
-      --black: #0a0a0a;
-      --ice: #F4FAFF;
-      --blush: #F9EEF1;
-      --blush-deep: #f0dde3;
-      --white: #FFFFFF;
-      --muted: #6e6e6e;
-      --border: #e8d0d4;
-      --border-light: #f0e6e9;
-      --nav-h: 64px;
-      --r: 14px;
-      --ease: cubic-bezier(0.4,0,0.2,1);
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium SaaS Platform | Automate & Scale</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0B0D12;
+            --bg-darker: #05070A;
+            --bg-card: rgba(20, 24, 32, 0.6);
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0AEC0;
+            --text-muted: #718096;
+            --accent-blue: #4F8EF7;
+            --accent-violet: #8B5CF6;
+            --accent-cyan: #06B6D4;
+            --accent-gradient: linear-gradient(135deg, #4F8EF7, #8B5CF6, #06B6D4);
+            --glass-effect: rgba(255, 255, 255, 0.05);
+            --border-glow: rgba(79, 142, 247, 0.2);
+            --shadow-glow: 0 0 30px rgba(79, 142, 247, 0.1);
+        }
 
-    /* ── RESET ── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
-    body { font-family: 'Inter', sans-serif; color: var(--black); background: var(--white); line-height: 1.6; overflow-x: hidden; }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; text-decoration: none; }
-    ul { list-style: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* ── TYPOGRAPHY ── */
-    h1,h2,h3,h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.15; }
-    h1 { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; }
-    h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); font-weight: 700; }
-    h3 { font-size: 1.15rem; font-weight: 600; }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    /* ── LAYOUT ── */
-    .container { width: 100%; padding: 0 60px; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 200;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 5%;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-light);
-    }
-    .nav-brand {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem; font-weight: 700; color: var(--burgundy);
-      letter-spacing: -0.02em;
-    }
-    .nav-links { display: flex; align-items: center; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.9rem; font-weight: 500;
-      color: var(--black); letter-spacing: 0.02em;
-      position: relative;
-      transition: color 0.2s var(--ease);
-    }
-    .nav-links a::after {
-      content: ''; position: absolute;
-      bottom: -4px; left: 0;
-      width: 0; height: 2px;
-      background: var(--burgundy);
-      transition: width 0.2s var(--ease);
-    }
-    .nav-links a:hover { color: var(--burgundy); }
-    .nav-links a:hover::after { width: 100%; }
-    .nav-hire {
-      font-size: 0.9rem; font-weight: 600 !important;
-      padding: 0.55rem 1.4rem; border-radius: 100px;
-      background: var(--burgundy); color: var(--white) !important;
-      transition: background 0.2s var(--ease), transform 0.2s var(--ease) !important;
-    }
-    .nav-hire::after { display: none !important; }
-    .nav-hire:hover { background: var(--burgundy-deep) !important; transform: translateY(-1px); }
-    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 6px; }
-    .hamburger span { display: block; width: 22px; height: 2px; background: var(--black); border-radius: 2px; transition: 0.3s; }
-    .mobile-menu {
-      display: none; position: fixed; inset: var(--nav-h) 0 0 0;
-      background: var(--white); z-index: 190; flex-direction: column;
-      padding: 32px 28px; gap: 8px; border-top: 1px solid var(--border-light);
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      font-size: 1rem; font-weight: 500; padding: 13px 16px;
-      border-radius: var(--r); color: var(--black);
-      transition: background 0.2s;
-    }
-    .mobile-menu a:hover { background: var(--blush); color: var(--burgundy); }
-    .mobile-menu .nav-hire {
-      text-align: center; background: var(--burgundy); color: var(--white) !important;
-      margin-top: 8px;
-    }
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
 
-    /* ── HERO ── */
-    .hero {
-      padding: 100px 0 80px;
-      background: var(--white);
-      position: relative; overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; top: -120px; right: -160px;
-      width: 520px; height: 520px; border-radius: 50%;
-      background: radial-gradient(circle, var(--blush) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: '';
-      position: absolute; bottom: -80px; left: -100px;
-      width: 350px; height: 350px; border-radius: 50%;
-      background: radial-gradient(circle, var(--blush) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .hero-inner { position: relative; z-index: 1; max-width: 760px; }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 10px;
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--burgundy);
-      margin-bottom: 20px;
-    }
-    .hero-eyebrow::before {
-      content: ''; display: block; width: 28px; height: 1.5px;
-      background: var(--burgundy);
-    }
-    .hero h1 { color: var(--black); margin-bottom: 20px; }
-    .hero h1 em { font-style: italic; color: var(--burgundy); }
-    .hero-desc {
-      font-size: 1.08rem; color: var(--muted); max-width: 540px;
-      margin-bottom: 40px; line-height: 1.75;
-    }
-    .hero-filters { display: flex; flex-wrap: wrap; gap: 10px; }
-    .filter-btn {
-      font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600;
-      padding: 9px 20px; border-radius: 100px; cursor: pointer;
-      border: 1.5px solid var(--border);
-      background: var(--white); color: var(--muted);
-      transition: all 0.2s var(--ease);
-      letter-spacing: 0.02em;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: var(--burgundy); color: var(--white); border-color: var(--burgundy);
-    }
+        /* Glass Card Effect */
+        .glass-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-glow);
+            border-radius: 20px;
+            box-shadow: var(--shadow-glow);
+            transition: all 0.4s ease;
+        }
 
-    /* ── ABOUT ── */
-    .about { padding: 80px 0; background: var(--blush); }
-    .about-inner {
-      display: grid; grid-template-columns: 1fr 1.6fr; gap: 64px; align-items: center;
-    }
-    .about-photo {
-      aspect-ratio: 3/4; border-radius: var(--r);
-      background: var(--blush-deep);
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-      border: 2px solid var(--border);
-    }
-    .about-photo-placeholder {
-      display: flex; flex-direction: column; align-items: center; gap: 12px;
-      color: var(--burgundy); opacity: 0.45;
-    }
-    .about-photo-placeholder svg { width: 52px; height: 52px; }
-    .about-photo-placeholder p { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
-    .about-photo::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(160deg, transparent 60%, rgba(128,0,32,0.06) 100%);
-    }
-    .about-eyebrow {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--burgundy);
-      margin-bottom: 14px; display: flex; align-items: center; gap: 8px;
-    }
-    .about-eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--burgundy); }
-    .about h2 { margin-bottom: 18px; color: var(--black); }
-    .about-bio { font-size: 1rem; color: var(--muted); line-height: 1.8; margin-bottom: 32px; }
-    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-    .stat-card {
-      background: var(--white); border-radius: var(--r);
-      padding: 20px 16px; text-align: center;
-      border: 1px solid var(--border);
-    }
-    .stat-num {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.9rem; font-weight: 800; color: var(--burgundy);
-      line-height: 1; margin-bottom: 5px;
-    }
-    .stat-label { font-size: 0.72rem; font-weight: 500; color: var(--muted); letter-spacing: 0.04em; }
+        .glass-card:hover {
+            border-color: rgba(79, 142, 247, 0.4);
+            box-shadow: 0 0 50px rgba(79, 142, 247, 0.2);
+            transform: translateY(-5px);
+        }
 
-    /* ── SECTION HEADER ── */
-    .section-header { margin-bottom: 48px; }
-    .section-eyebrow {
-      font-size: 0.7rem; font-weight: 600; letter-spacing: 0.14em;
-      text-transform: uppercase; color: var(--burgundy);
-      display: flex; align-items: center; gap: 8px;
-      margin-bottom: 10px;
-    }
-    .section-eyebrow::before { content: ''; display: block; width: 20px; height: 1.5px; background: var(--burgundy); }
-    .section-header h2 { color: var(--black); }
-    .section-header p { color: var(--muted); margin-top: 10px; max-width: 520px; font-size: 0.95rem; }
+        /* Gradient Text */
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-    /* ── WORK SECTIONS ── */
-    .work-section { padding: 88px 0; }
-    .work-section:nth-child(even) { background: var(--ice); }
-    .work-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        /* Glow Effect */
+        .glow {
+            position: relative;
+        }
 
-    /* ── CARDS ── */
-    .card {
-      background: var(--white); border: 1px solid var(--border);
-      border-radius: var(--r); overflow: hidden;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
-      opacity: 0; transform: translateY(20px);
-    }
-    .card.visible { opacity: 1; transform: translateY(0); }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 20px 50px rgba(128,0,32,0.1);
-      border-color: var(--burgundy);
-    }
-    .card-thumb {
-      aspect-ratio: 16/10;
-      background: var(--blush);
-      display: flex; align-items: center; justify-content: center;
-      position: relative; overflow: hidden;
-    }
-    .card-thumb-inner {
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      color: var(--burgundy); opacity: 0.4;
-    }
-    .card-thumb-inner svg { width: 36px; height: 36px; }
-    .card-thumb-inner span { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
-    .card-body { padding: 22px 22px 24px; }
-    .card-tags { display: flex; flex-wrap: wrap; gap: 32px; margin-bottom: 12px; }
-    .tag {
-      font-size: 0.67rem; font-weight: 600; letter-spacing: 0.07em;
-      padding: 3px 10px; border-radius: 100px; text-transform: uppercase;
-    }
-    .tag-service { background: var(--blush); color: var(--burgundy-deep); border: 1px solid var(--border); }
-    .tag-tool { background: var(--white); color: var(--black); border: 1px solid #ddd; }
-    .card-body h3 { margin-bottom: 8px; color: var(--black); font-size: 1.05rem; }
-    .card-body p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; margin-bottom: 18px; }
-    .card-link {
-      font-size: 0.8rem; font-weight: 600; color: var(--burgundy);
-      display: inline-flex; align-items: center; gap: 32px;
-      transition: gap 0.2s var(--ease);
-    }
-    .card-link:hover { gap: 10px; }
-    .card-link svg { width: 14px; height: 14px; }
+        .glow::after {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: var(--accent-gradient);
+            z-index: -1;
+            opacity: 0;
+            filter: blur(20px);
+            transition: opacity 0.3s ease;
+        }
 
-    /* ── CTA ── */
-    .cta-band {
-      padding: 88px 0; background: var(--burgundy);
-      position: relative; overflow: hidden;
-    }
-    .cta-band::before {
-      content: '';
-      position: absolute; top: -100px; right: -100px;
-      width: 400px; height: 400px; border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-    }
-    .cta-band::after {
-      content: '';
-      position: absolute; bottom: -80px; left: -80px;
-      width: 300px; height: 300px; border-radius: 50%;
-      background: rgba(255,255,255,0.04);
-    }
-    .cta-inner { position: relative; z-index: 1; text-align: center; max-width: 600px; margin: 0 auto; }
-    .cta-inner h2 { color: var(--white); margin-bottom: 16px; }
-    .cta-inner p { color: rgba(255,255,255,0.7); font-size: 1rem; margin-bottom: 36px; }
-    .cta-btns { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
-    .btn-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600;
-      padding: 13px 28px; border-radius: 100px; cursor: pointer;
-      background: var(--white); color: var(--burgundy);
-      transition: background 0.2s var(--ease), transform 0.2s var(--ease);
-    }
-    .btn-white:hover { background: var(--blush); transform: translateY(-2px); }
-    .btn-outline-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: 'Inter', sans-serif; font-size: 0.88rem; font-weight: 600;
-      padding: 12px 28px; border-radius: 100px; cursor: pointer;
-      background: transparent; color: var(--white);
-      border: 2px solid rgba(255,255,255,0.4);
-      transition: border-color 0.2s var(--ease), background 0.2s var(--ease), transform 0.2s var(--ease);
-    }
-    .btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+        .glow:hover::after {
+            opacity: 0.3;
+        }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--black); padding: 48px 0;
-      color: rgba(255,255,255,0.5);
-    }
-    .footer-inner {
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;
-    }
-    .footer-brand strong {
-      font-family: 'Playfair Display', serif;
-      font-size: 1rem; font-weight: 700; color: var(--white);
-    }
-    .footer-brand p { font-size: 0.78rem; margin-top: 4px; }
-    .footer-socials { display: flex; gap: 14px; }
-    .footer-socials a {
-      width: 36px; height: 36px; border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.15);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.55); font-size: 0.78rem;
-      transition: border-color 0.2s, color 0.2s, background 0.2s;
-    }
-    .footer-socials a:hover { border-color: var(--burgundy); color: var(--white); background: var(--burgundy); }
-    .footer-copy { font-size: 0.75rem; text-align: right; }
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
 
-    /* ── HIDDEN (filter) ── */
-    .card[data-hidden] { display: none; }
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: var(--text-primary);
+            box-shadow: var(--shadow-glow);
+        }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-inner > * { animation: fadeUp 0.7s var(--ease) both; }
-    .hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
-    .hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
-    .hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
-    .hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 40px rgba(79, 142, 247, 0.4);
+        }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .work-grid { grid-template-columns: repeat(2, 1fr); }
-      .about-inner { grid-template-columns: 1fr; gap: 40px; }
-      .about-photo { max-width: 280px; aspect-ratio: 1/1; }
-    }
-    @media (max-width: 900px) {
-      .container { padding: 0 32px; }
-    }
-    @media (max-width: 640px) {
-      .container { padding: 0 20px; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      h1 { font-size: 2.4rem; }
-      .work-grid { grid-template-columns: 1fr; }
-      .about-stats { grid-template-columns: repeat(3, 1fr); }
-      .footer-inner { flex-direction: column; text-align: center; }
-      .footer-copy { text-align: center; }
-      .footer-socials { justify-content: center; }
-    }
-  </style>
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-secondary);
+            border: 1px solid var(--border-glow);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        /* Section Spacing */
+        section {
+            padding: 6rem 0;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(79, 142, 247, 0.1) 0%, transparent 50%),
+                        radial-gradient(ellipse at 70% 50%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .trust-badges {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .trust-badges span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .trust-badges span::before {
+            content: '✓';
+            color: #10B981;
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+        }
+
+        .dashboard-mockup {
+            width: 100%;
+            height: 100%;
+            background: var(--bg-darker);
+            border-radius: 20px;
+            border: 1px solid var(--border-glow);
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 1rem;
+            border: 1px solid var(--border-glow);
+            box-shadow: var(--shadow-glow);
+            backdrop-filter: blur(10px);
+        }
+
+        .floating-card:nth-child(1) {
+            top: 20%;
+            left: -10%;
+            width: 200px;
+            height: 120px;
+        }
+
+        .floating-card:nth-child(2) {
+            top: 60%;
+            right: -10%;
+            width: 180px;
+            height: 100px;
+        }
+
+        .floating-card:nth-child(3) {
+            bottom: 10%;
+            left: 20%;
+            width: 150px;
+            height: 80px;
+        }
+
+        /* Logos Section */
+        .logos {
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .logos p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+        }
+
+        .logo-grid {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            opacity: 0.6;
+        }
+
+        .logo-grid img {
+            height: 30px;
+            filter: grayscale(100%) brightness(1.5);
+            transition: all 0.3s ease;
+        }
+
+        .logo-grid img:hover {
+            filter: grayscale(0%) brightness(1);
+            opacity: 1;
+        }
+
+        /* Metrics Section */
+        .metrics {
+            background: linear-gradient(180deg, transparent, rgba(79, 142, 247, 0.05), transparent);
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid var(--border-glow);
+            transition: all 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .metric-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Problem Solution Section */
+        .problem-solution {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .problem-card, .solution-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2.5rem;
+            border: 1px solid var(--border-glow);
+        }
+
+        .problem-card {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+
+        .solution-card {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: rgba(16, 185, 129, 0.3);
+        }
+
+        .problem-card h3, .solution-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-item, .solution-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+        }
+
+        .problem-item {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .solution-item {
+            background: rgba(16, 185, 129, 0.1);
+        }
+
+        .problem-item::before {
+            content: '✗';
+            color: #EF4444;
+            font-weight: bold;
+        }
+
+        .solution-item::before {
+            content: '✓';
+            color: #10B981;
+            font-weight: bold;
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-glow);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-preview {
+            background: var(--bg-darker);
+            border-radius: 10px;
+            padding: 1rem;
+            border: 1px solid var(--border-glow);
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+        }
+
+        /* Product Demo Section */
+        .demo-section {
+            text-align: center;
+        }
+
+        .demo-mockup {
+            background: var(--bg-darker);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-glow);
+            margin-top: 3rem;
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .demo-floating-label {
+            position: absolute;
+            background: var(--bg-card);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-glow);
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            backdrop-filter: blur(10px);
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-card {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+        }
+
+        .benefit-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-content p {
+            color: var(--text-secondary);
+        }
+
+        /* Integrations Section */
+        .integrations {
+            text-align: center;
+        }
+
+        .integration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .integration-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--bg-card);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-glow);
+            transition: all 0.3s ease;
+            margin: 0 auto;
+        }
+
+        .integration-icon:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--shadow-glow);
+        }
+
+        .integration-icon img {
+            width: 40px;
+            height: 40px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            overflow: hidden;
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            gap: 2rem;
+            overflow-x: auto;
+            padding: 1rem 0;
+            scroll-snap-type: x mandatory;
+        }
+
+        .testimonial-card {
+            min-width: 350px;
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-glow);
+            scroll-snap-align: start;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent-gradient);
+        }
+
+        .testimonial-info h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-info p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .stars {
+            color: #F59E0B;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* Security Section */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .security-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-glow);
+        }
+
+        .security-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .security-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .security-card p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Pricing Section */
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .pricing-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .toggle-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            border: 1px solid var(--border-glow);
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background: var(--accent-gradient);
+            color: var(--text-primary);
+            border-color: transparent;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .pricing-card {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid var(--border-glow);
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            background: var(--accent-gradient);
+            border-color: transparent;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured .pricing-header h3 {
+            color: var(--text-primary);
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-header p {
+            color: var(--text-secondary);
+        }
+
+        .price {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .price-amount {
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+        .price-period {
+            color: var(--text-secondary);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-glow);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: #10B981;
+        }
+
+        .pricing-card.featured .pricing-features li::before {
+            color: var(--text-primary);
+        }
+
+        .pricing-cta {
+            text-align: center;
+        }
+
+        /* FAQ Section */
+        .faq-item {
+            background: var(--bg-card);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-glow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .final-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(79, 142, 247, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .final-cta h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 1rem;
+        }
+
+        .final-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .final-cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--border-glow);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h4 {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-column ul li a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border-glow);
+            color: var(--text-muted);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            background: var(--bg-card);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border-glow);
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: var(--accent-gradient);
+            color: var(--text-primary);
+            border-color: transparent;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .hero-visual {
+                height: 400px;
+            }
+
+            .problem-solution {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 0;
+            }
+
+            .hero {
+                padding: 6rem 0;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .metrics-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .final-cta-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+        .stagger-4 { transition-delay: 0.4s; }
+    </style>
 </head>
 <body>
-
-  <!-- ── NAV ── -->
-  <nav>
-    <a href="#top" class="nav-brand">Seño Digital Studio</a>
-    <ul class="nav-links">
-      <li><a href="#va">VA</a></li>
-      <li><a href="#design">Design</a></li>
-      <li><a href="#video">Video</a></li>
-      <li><a href="#web">Web</a></li>
-      <li><a href="https://enajfs.github.io/portfolio/contact.html" target="_blank" class="nav-hire">Hire Me</a></li>
-    </ul>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#va" onclick="toggleMenu()">Virtual Assistance</a>
-    <a href="#design" onclick="toggleMenu()">Design</a>
-    <a href="#video" onclick="toggleMenu()">Video</a>
-    <a href="#web" onclick="toggleMenu()">Web</a>
-    <a href="https://enajfs.github.io/portfolio/contact.html" target="_blank" class="nav-hire">Hire Me →</a>
-  </div>
-
-  <!-- ── HERO ── -->
-  <section class="hero" id="top">
-    <div class="container">
-      <div class="hero-inner">
-        <div class="hero-eyebrow">Selected Works</div>
-        <h1>Where ideas meet<br><em>intentional craft.</em></h1>
-        <p class="hero-desc">A curated collection of VA, design, video, and web projects — each built with care, strategy, and a creative eye.</p>
-        <div class="hero-filters">
-          <button class="filter-btn active" data-filter="all" onclick="filterCards('all', this)">All Work</button>
-          <button class="filter-btn" data-filter="va" onclick="filterCards('va', this)">Virtual Assistance</button>
-          <button class="filter-btn" data-filter="design" onclick="filterCards('design', this)">Design</button>
-          <button class="filter-btn" data-filter="video" onclick="filterCards('video', this)">Video</button>
-          <button class="filter-btn" data-filter="web" onclick="filterCards('web', this)">Web</button>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="trust-badges">
+                        <span>No credit card required</span>
+                        <span>Setup in minutes</span>
+                        <span>Enterprise-grade security</span>
+                    </div>
+                    <h1>Transform <span class="gradient-text">Complex Workflows</span> Into Automated Growth</h1>
+                    <p>The all-in-one platform that helps teams automate processes, increase productivity, and scale operations without complexity.</p>
+                    <div class="hero-buttons">
+                        <a href="#" class="btn btn-primary glow">Start Free Trial</a>
+                        <a href="#" class="btn btn-secondary">Book Demo</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="dashboard-mockup glow">
+                        <div class="floating-card"></div>
+                        <div class="floating-card"></div>
+                        <div class="floating-card"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="logos">
+                <p>Trusted by industry leaders</p>
+                <div class="logo-grid">
+                    <img src="https://via.placeholder.com/120x30/FFFFFF/0B0D12?text=Stripe" alt="Stripe">
+                    <img src="https://via.placeholder.com/120x30/FFFFFF/0B0D12?text=Linear" alt="Linear">
+                    <img src="https://via.placeholder.com/120x30/FFFFFF/0B0D12?text=Notion" alt="Notion">
+                    <img src="https://via.placeholder.com/120x30/FFFFFF/0B0D12?text=Vercel" alt="Vercel">
+                    <img src="https://via.placeholder.com/120x30/FFFFFF/0B0D12?text=Apple" alt="Apple">
+                    <img src="https://via.placeholder.com/120x30/FFFFFF/0B0D12?text=Google" alt="Google">
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── ABOUT ── -->
-  <section class="about" id="about">
-    <div class="container">
-      <div class="about-inner">
-        <div class="about-photo">
-          <div class="about-photo-placeholder">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-              <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
-            </svg>
-            <p>Your photo here</p>
-          </div>
+    <!-- Metrics Section -->
+    <section class="metrics">
+        <div class="container">
+            <div class="metrics-grid">
+                <div class="metric-card fade-in stagger-1">
+                    <div class="metric-value">50,000+</div>
+                    <div class="metric-label">Active Users</div>
+                </div>
+                <div class="metric-card fade-in stagger-2">
+                    <div class="metric-value">99.99%</div>
+                    <div class="metric-label">Platform Uptime</div>
+                </div>
+                <div class="metric-card fade-in stagger-3">
+                    <div class="metric-value">$2B+</div>
+                    <div class="metric-label">Transactions Processed</div>
+                </div>
+                <div class="metric-card fade-in stagger-4">
+                    <div class="metric-value">180+</div>
+                    <div class="metric-label">Countries Served</div>
+                </div>
+                <div class="metric-card fade-in stagger-5">
+                    <div class="metric-value">4.9/5</div>
+                    <div class="metric-label">Customer Rating</div>
+                </div>
+            </div>
         </div>
-        <div class="about-content">
-          <div class="about-eyebrow">About Me</div>
-          <h2>Hi, I'm Jane — your creative + digital partner.</h2>
-          <p class="about-bio">
-            I'm a freelance Virtual Assistant and Creative based in the Philippines, operating under <strong>Seño Digital Studio</strong>. I help businesses and entrepreneurs stay organized, look polished, and show up consistently online — through thoughtful design, engaging video content, and reliable VA support.<br><br>
-            Whether you need a stunning brand kit, a scroll-stopping reel, or a smooth-running back office, I bring both creative instinct and strategic thinking to every project.
-          </p>
-          <div class="about-stats">
-            <div class="stat-card">
-              <div class="stat-num">20+</div>
-              <div class="stat-label">Projects Done</div>
+    </section>
+
+    <!-- Problem vs Solution Section -->
+    <section class="problem-section">
+        <div class="container">
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">The Problem vs Our Solution</h2>
+            <div class="problem-solution">
+                <div class="problem-card fade-in stagger-1">
+                    <h3>Common Frustrations</h3>
+                    <div class="problem-item">
+                        <span>Manual workflows</span>
+                    </div>
+                    <div class="problem-item">
+                        <span>Disconnected tools</span>
+                    </div>
+                    <div class="problem-item">
+                        <span>Data silos</span>
+                    </div>
+                    <div class="problem-item">
+                        <span>Slow approvals</span>
+                    </div>
+                    <div class="problem-item">
+                        <span>Lost productivity</span>
+                    </div>
+                </div>
+                <div class="solution-card fade-in stagger-2">
+                    <h3>Our Solutions</h3>
+                    <div class="solution-item">
+                        <span>Automated workflows</span>
+                    </div>
+                    <div class="solution-item">
+                        <span>Unified platform</span>
+                    </div>
+                    <div class="solution-item">
+                        <span>Centralized data</span>
+                    </div>
+                    <div class="solution-item">
+                        <span>Instant approvals</span>
+                    </div>
+                    <div class="solution-item">
+                        <span>Maximized efficiency</span>
+                    </div>
+                </div>
             </div>
-            <div class="stat-card">
-              <div class="stat-num">4</div>
-              <div class="stat-label">Service Areas</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">10+</div>
-              <div class="stat-label">Tools Mastered</div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── VIRTUAL ASSISTANCE ── -->
-  <section class="work-section" id="va">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Virtual Assistance</div>
-        <h2>Behind-the-scenes support<br>that keeps things running.</h2>
-        <p>From content calendars to inbox management — organised, efficient, and always on brand.</p>
-      </div>
-      <div class="work-grid">
-
-        <div class="card" data-category="va">
-          <div class="card-thumb" style="background: #fdf0f3;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
-              <span>Content Calendar</span>
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Powerful Features</h2>
+            <div class="features-grid">
+                <div class="feature-card glass-card fade-in stagger-1">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Automation</h3>
+                    <p>Automate repetitive tasks with intelligent workflows that learn and adapt to your business processes.</p>
+                    <div class="feature-preview">AI Workflow Builder</div>
+                </div>
+                <div class="feature-card glass-card fade-in stagger-2">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Analytics</h3>
+                    <p>Track performance instantly with live dashboards and comprehensive reporting tools.</p>
+                    <div class="feature-preview">Analytics Dashboard</div>
+                </div>
+                <div class="feature-card glass-card fade-in stagger-3">
+                    <div class="feature-icon">👥</div>
+                    <h3>Team Collaboration</h3>
+                    <p>Keep everyone aligned with built-in collaboration tools and shared workspaces.</p>
+                    <div class="feature-preview">Team Workspace</div>
+                </div>
+                <div class="feature-card glass-card fade-in stagger-4">
+                    <div class="feature-icon">🔗</div>
+                    <h3>Advanced Integrations</h3>
+                    <p>Connect with hundreds of tools and services to create a seamless workflow.</p>
+                    <div class="feature-preview">Integration Hub</div>
+                </div>
+                <div class="feature-card glass-card fade-in stagger-5">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Security & Compliance</h3>
+                    <p>Enterprise-grade protection with SOC 2, GDPR, and ISO 27001 compliance.</p>
+                    <div class="feature-preview">Security Dashboard</div>
+                </div>
+                <div class="feature-card glass-card fade-in stagger-6">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>Custom Workflows</h3>
+                    <p>Adapt the platform to your business with customizable workflows and templates.</p>
+                    <div class="feature-preview">Workflow Customizer</div>
+                </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">VA</span>
-              <span class="tag tag-tool">Notion</span>
-              <span class="tag tag-tool">Canva</span>
-            </div>
-            <h3>Monthly Social Media Content Calendar</h3>
-            <p>A structured 30-day content plan with post themes, caption drafts, and scheduled publish dates for a lifestyle brand.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
         </div>
+    </section>
 
-        <div class="card" data-category="va">
-          <div class="card-thumb" style="background: #f5f0fd;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>Email Templates</span>
+    <!-- Product Demo Section -->
+    <section class="demo-section">
+        <div class="container">
+            <h2 class="fade-in" style="font-size: 2.5rem; margin-bottom: 1rem;">Interactive Product Demo</h2>
+            <p class="fade-in stagger-1" style="color: var(--text-secondary); margin-bottom: 2rem;">Explore our platform's powerful features</p>
+            <div class="demo-mockup glass-card fade-in stagger-2">
+                <div class="demo-floating-label" style="top: 10%; left: 10%;">Analytics</div>
+                <div class="demo-floating-label" style="top: 20%; right: 15%;">Workflow Builder</div>
+                <div class="demo-floating-label" style="bottom: 30%; left: 20%;">Notifications</div>
+                <div class="demo-floating-label" style="bottom: 15%; right: 10%;">KPI Widgets</div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">VA</span>
-              <span class="tag tag-tool">Gmail</span>
-              <span class="tag tag-tool">ChatGPT</span>
-            </div>
-            <h3>Client Onboarding Email Sequence</h3>
-            <p>A 5-part automated email sequence for welcoming new clients — friendly, professional, and on-brand from day one.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
         </div>
+    </section>
 
-        <div class="card" data-category="va">
-          <div class="card-thumb" style="background: #f0f7fd;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
-              <span>Scheduling</span>
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+        <div class="container">
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Everything Your Team Needs To Move Faster</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in stagger-1">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-content">
+                        <h3>Increase Productivity</h3>
+                        <p>Reduce manual work by up to 80% with our automation tools.</p>
+                    </div>
+                </div>
+                <div class="benefit-card fade-in stagger-2">
+                    <div class="benefit-icon">👁️</div>
+                    <div class="benefit-content">
+                        <h3>Improve Visibility</h3>
+                        <p>Get complete insight into every process with real-time tracking.</p>
+                    </div>
+                </div>
+                <div class="benefit-card fade-in stagger-3">
+                    <div class="benefit-icon">🚀</div>
+                    <div class="benefit-content">
+                        <h3>Scale Effortlessly</h3>
+                        <p>Grow without increasing operational complexity.</p>
+                    </div>
+                </div>
+                <div class="benefit-card fade-in stagger-4">
+                    <div class="benefit-icon">🧠</div>
+                    <div class="benefit-content">
+                        <h3>Make Better Decisions</h3>
+                        <p>Use real-time data and AI-powered insights to drive success.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">VA</span>
-              <span class="tag tag-tool">Later</span>
-              <span class="tag tag-tool">Meta</span>
-            </div>
-            <h3>Social Media Scheduling Setup</h3>
-            <p>Full scheduling workflow for a coaching client — batching, approvals, and auto-publishing across Instagram and Facebook.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ── DESIGN ── -->
-  <section class="work-section" id="design" style="background: var(--ice);">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Design</div>
-        <h2>Visuals that speak before<br>you say a word.</h2>
-        <p>Brand kits, social graphics, and print-ready materials — all crafted with intention and aesthetic precision.</p>
-      </div>
-      <div class="work-grid">
-
-        <div class="card" data-category="design">
-          <div class="card-thumb" style="background: #fff5f7;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-              <span>Brand Kit</span>
+    <!-- Integrations Section -->
+    <section class="integrations">
+        <div class="container">
+            <h2 class="fade-in" style="font-size: 2.5rem; margin-bottom: 1rem;">Works With Your Existing Tech Stack</h2>
+            <p class="fade-in stagger-1" style="color: var(--text-secondary); margin-bottom: 2rem;">Seamless integrations with your favorite tools</p>
+            <div class="integration-grid">
+                <div class="integration-icon fade-in stagger-1"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=S" alt="Slack"></div>
+                <div class="integration-icon fade-in stagger-2"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=G" alt="Google"></div>
+                <div class="integration-icon fade-in stagger-3"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=M" alt="Microsoft"></div>
+                <div class="integration-icon fade-in stagger-4"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=SF" alt="Salesforce"></div>
+                <div class="integration-icon fade-in stagger-5"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=H" alt="HubSpot"></div>
+                <div class="integration-icon fade-in stagger-6"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=Z" alt="Zapier"></div>
+                <div class="integration-icon fade-in stagger-7"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=N" alt="Notion"></div>
+                <div class="integration-icon fade-in stagger-8"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=J" alt="Jira"></div>
+                <div class="integration-icon fade-in stagger-9"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=A" alt="Asana"></div>
+                <div class="integration-icon fade-in stagger-10"><img src="https://via.placeholder.com/40/40/FFFFFF/0B0D12?text=ST" alt="Stripe"></div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Design</span>
-              <span class="tag tag-tool">Canva</span>
-            </div>
-            <h3>Complete Brand Identity Kit</h3>
-            <p>Logo suite, color palette, typography guidelines, and branded templates for a local food business — cohesive and launch-ready.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
         </div>
+    </section>
 
-        <div class="card" data-category="design">
-          <div class="card-thumb" style="background: #f5fbf0;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
-              <span>Social Graphics</span>
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">What Our Customers Say</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial-card glass-card fade-in stagger-1">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <h4>Sarah Chen</h4>
+                            <p>CTO, TechCorp</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>"This platform completely transformed how our operations team works. We reduced manual effort by 70% within the first month."</n                    </p>
+                </div>
+                <div class="testimonial-card glass-card fade-in stagger-2">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>VP Operations, Global Inc.</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>"The automation capabilities are unmatched. We've saved thousands of hours and increased our output significantly."</n                    </p>
+                </div>
+                <div class="testimonial-card glass-card fade-in stagger-3">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <h4>Emma Johnson</h4>
+                            <p>Founder, StartupX</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>"As a startup, we needed a solution that could scale with us. This platform has been perfect for our growth journey."</n                    </p>
+                </div>
+                <div class="testimonial-card glass-card fade-in stagger-4">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar"></div>
+                        <div class="testimonial-info">
+                            <h4>David Kim</h4>
+                            <p>Product Manager, Innovate Co.</p>
+                        </div>
+                    </div>
+                    <div class="stars">★★★★★</div>
+                    <p>"The analytics and reporting features give us insights we never had before. It's been a game-changer for our strategy."</n                    </p>
+                </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Design</span>
-              <span class="tag tag-tool">Canva</span>
-            </div>
-            <h3>Instagram Feed Template Pack</h3>
-            <p>A set of 12 on-brand Instagram post templates — quotes, product highlights, and promotional graphics ready to customize.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
         </div>
+    </section>
 
-        <div class="card" data-category="design">
-          <div class="card-thumb" style="background: #fdf5f0;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              <span>Print Design</span>
+    <!-- Security Section -->
+    <section class="security-section">
+        <div class="container">
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 1rem; font-size: 2.5rem;">Built For Enterprise Trust</h2>
+            <p class="fade-in stagger-1" style="text-align: center; color: var(--text-secondary); margin-bottom: 3rem;">Industry-leading security and compliance</p>
+            <div class="security-grid">
+                <div class="security-card glass-card fade-in stagger-1">
+                    <div class="security-icon">🛡️</div>
+                    <h3>SOC 2 Compliance</h3>
+                    <p>Certified security controls</p>
+                </div>
+                <div class="security-card glass-card fade-in stagger-2">
+                    <div class="security-icon">🔐</div>
+                    <h3>GDPR Compliance</h3>
+                    <p>Data protection guaranteed</p>
+                </div>
+                <div class="security-card glass-card fade-in stagger-3">
+                    <div class="security-icon">📜</div>
+                    <h3>ISO 27001</h3>
+                    <p>International security standard</p>
+                </div>
+                <div class="security-card glass-card fade-in stagger-4">
+                    <div class="security-icon">🔒</div>
+                    <h3>End-to-End Encryption</h3>
+                    <p>Your data is always secure</p>
+                </div>
+                <div class="security-card glass-card fade-in stagger-5">
+                    <div class="security-icon">🔑</div>
+                    <h3>Single Sign-On</h3>
+                    <p>Seamless access management</p>
+                </div>
+                <div class="security-card glass-card fade-in stagger-6">
+                    <div class="security-icon">👤</div>
+                    <h3>Role-Based Permissions</h3>
+                    <p>Granular access control</p>
+                </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Design</span>
-              <span class="tag tag-tool">Canva</span>
-            </div>
-            <h3>Event Flyer & Poster</h3>
-            <p>Print-ready promotional materials for a community event — bold layout, clear hierarchy, and designed for both digital and print.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
         </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
-
-  <!-- ── VIDEO ── -->
-  <section class="work-section" id="video">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Video Editing</div>
-        <h2>Stories told frame<br>by frame.</h2>
-        <p>Reels, brand videos, and tutorial edits that hold attention and drive action.</p>
-      </div>
-      <div class="work-grid">
-
-        <div class="card" data-category="video">
-          <div class="card-thumb" style="background: #f0f5fd;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-              <span>Brand Reel</span>
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="container">
+            <div class="pricing-header">
+                <h2 class="fade-in" style="font-size: 2.5rem; margin-bottom: 1rem;">Simple, Transparent Pricing</h2>
+                <p class="fade-in stagger-1" style="color: var(--text-secondary);">Choose the plan that fits your needs</p>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Video</span>
-              <span class="tag tag-tool">CapCut</span>
+            <div class="pricing-toggle">
+                <button class="toggle-btn active">Monthly</button>
+                <button class="toggle-btn">Annual (Save 20%)</button>
             </div>
-            <h3>Brand Launch Reel</h3>
-            <p>A punchy 30-second brand video for a beauty brand's Instagram launch — fast cuts, on-trend transitions, and branded captions.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
+            <div class="pricing-grid">
+                <div class="pricing-card glass-card fade-in stagger-1">
+                    <div class="pricing-header">
+                        <h3>Starter</h3>
+                        <p>For small teams</p>
+                    </div>
+                    <div class="price">
+                        <span class="price-amount">$29</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Up to 10 users</li>
+                        <li>Basic automation</li>
+                        <li>Standard support</li>
+                        <li>Core integrations</li>
+                    </ul>
+                    <div class="pricing-cta">
+                        <a href="#" class="btn btn-secondary">Get Started</a>
+                    </div>
+                </div>
+                <div class="pricing-card glass-card featured fade-in stagger-2">
+                    <div class="pricing-header">
+                        <h3>Professional</h3>
+                        <p>For growing businesses</p>
+                    </div>
+                    <div class="price">
+                        <span class="price-amount">$79</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Up to 50 users</li>
+                        <li>Advanced automation</li>
+                        <li>Priority support</li>
+                        <li>All integrations</li>
+                        <li>Custom workflows</li>
+                    </ul>
+                    <div class="pricing-cta">
+                        <a href="#" class="btn btn-primary">Start Free Trial</a>
+                    </div>
+                </div>
+                <div class="pricing-card glass-card fade-in stagger-3">
+                    <div class="pricing-header">
+                        <h3>Enterprise</h3>
+                        <p>For large organizations</p>
+                    </div>
+                    <div class="price">
+                        <span class="price-amount">$199</span>
+                        <span class="price-period">/month</span>
+                    </div>
+                    <ul class="pricing-features">
+                        <li>Unlimited users</li>
+                        <li>Enterprise automation</li>
+                        <li>Dedicated support</li>
+                        <li>All integrations</li>
+                        <li>Custom workflows</li>
+                        <li>Advanced security</li>
+                    </ul>
+                    <div class="pricing-cta">
+                        <a href="#" class="btn btn-secondary">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
 
-        <div class="card" data-category="video">
-          <div class="card-thumb" style="background: #fdf8f0;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-              <span>Tutorial Video</span>
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="fade-in" style="text-align: center; margin-bottom: 3rem; font-size: 2.5rem;">Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item fade-in stagger-1">
+                    <div class="faq-question">
+                        <span>How long does setup take?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most teams can get started in under 30 minutes. Our onboarding process is designed to be quick and intuitive.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in stagger-2">
+                    <div class="faq-question">
+                        <span>Is there a free trial?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We offer a 14-day free trial with full access to all features. No credit card required.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in stagger-3">
+                    <div class="faq-question">
+                        <span>What integrations are available?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We support hundreds of integrations with popular tools like Slack, Google Workspace, Salesforce, and more.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in stagger-4">
+                    <div class="faq-question">
+                        <span>How secure is the platform?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We are SOC 2, GDPR, and ISO 27001 compliant with end-to-end encryption and enterprise-grade security.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in stagger-5">
+                    <div class="faq-question">
+                        <span>Can I scale as my company grows?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. Our platform scales with your business, from small teams to enterprise organizations.</p>
+                    </div>
+                </div>
+                <div class="faq-item fade-in stagger-6">
+                    <div class="faq-question">
+                        <span>Do you offer enterprise support?</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, our Enterprise plan includes dedicated support, custom onboarding, and a direct line to our engineering team.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Video</span>
-              <span class="tag tag-tool">Descript</span>
-              <span class="tag tag-tool">CapCut</span>
-            </div>
-            <h3>Product Tutorial Edit</h3>
-            <p>A polished how-to video for a skincare brand — clean subtitles, step overlays, and a soft branded color grade throughout.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
         </div>
+    </section>
 
-        <div class="card" data-category="video">
-          <div class="card-thumb" style="background: #f5f0fd;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.276A1 1 0 0121 8.723v6.554a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
-              <span>Short-form</span>
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 class="fade-in">Ready To Transform Your Operations?</h2>
+            <p class="fade-in stagger-1">Join thousands of modern companies already using our platform to automate workflows and scale their businesses.</p>
+            <div class="final-cta-buttons">
+                <a href="#" class="btn btn-primary glow fade-in stagger-2">Start Free Trial</a>
+                <a href="#" class="btn btn-secondary fade-in stagger-3">Schedule a Demo</a>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Video</span>
-              <span class="tag tag-tool">CapCut</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="#">Features</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">Pricing</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Help Center</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">Security</a></li>
+                    </ul>
+                </div>
             </div>
-            <h3>TikTok / Reels Short-form Pack</h3>
-            <p>Three short-form videos edited for maximum watch time — hook-first structure, sound-synced cuts, and strong CTAs at the end.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ── WEB ── -->
-  <section class="work-section" id="web" style="background: var(--ice);">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-eyebrow">Web Design</div>
-        <h2>Websites that work as hard<br>as you do.</h2>
-        <p>Clean, conversion-focused websites built on Carrd, Wix, and WordPress — no bloat, just results.</p>
-      </div>
-      <div class="work-grid">
-
-        <div class="card" data-category="web">
-          <div class="card-thumb" style="background: #f0fdf5;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-              <span>Carrd Site</span>
+            <div class="social-icons">
+                <a href="#">in</a>
+                <a href="#">X</a>
+                <a href="#">▶</a>
+                <a href="#">⚡</a>
             </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Web</span>
-              <span class="tag tag-tool">Carrd</span>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Premium SaaS Platform. All rights reserved.</p>
             </div>
-            <h3>Freelancer Link-in-Bio Site</h3>
-            <p>A clean one-page Carrd site for a freelance photographer — portfolio grid, testimonials, and a contact form above the fold.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
         </div>
+    </footer>
 
-        <div class="card" data-category="web">
-          <div class="card-thumb" style="background: #fdf0f8;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              <span>Wix Landing Page</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Web</span>
-              <span class="tag tag-tool">Wix</span>
-            </div>
-            <h3>Service Landing Page</h3>
-            <p>A high-converting Wix landing page for a coaching offer — strong hero, benefits section, FAQ, and a booking CTA that converts.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
-        </div>
+    <script>
+        // Fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        <div class="card" data-category="web">
-          <div class="card-thumb" style="background: #f0f5fd;">
-            <div class="card-thumb-inner">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
-              <span>WordPress Site</span>
-            </div>
-          </div>
-          <div class="card-body">
-            <div class="card-tags">
-              <span class="tag tag-service">Web</span>
-              <span class="tag tag-tool">WordPress</span>
-            </div>
-            <h3>Small Business WordPress Site</h3>
-            <p>A full multi-page WordPress website for a local restaurant — menu, about, gallery, and an embedded reservation form.</p>
-            <a href="#" class="card-link">View Project <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-          </div>
-        </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-      </div>
-    </div>
-  </section>
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
 
-  <!-- ── CTA BAND ── -->
-  <section class="cta-band">
-    <div class="container">
-      <div class="cta-inner">
-        <h2>Like what you see?<br><em>Let's build something great.</em></h2>
-        <p>Whether you need creative support, a polished website, or a reliable VA — I'm ready to help your business look and run its best.</p>
-        <div class="cta-btns">
-          <a href="https://enajfs.github.io/portfolio/contact.html" target="_blank" class="btn-white">Let's Work Together →</a>
-          <a href="https://enajfs.github.io/portfolio/" target="_blank" class="btn-outline-white">View Services</a>
-        </div>
-      </div>
-    </div>
-  </section>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.parentElement;
+                faqItem.classList.toggle('active');
+            });
+        });
 
-  <!-- ── FOOTER ── -->
- <footer>
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">
-          <strong>Seño Digital Studio</strong>
-          <p>VA · Design · Video · Web — Philippines</p>
-        </div>
-        <div class="footer-socials">
-          <a href="https://www.instagram.com/enaj.freelancer" target="_blank" title="Instagram">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://fb.com/profile.php?id=61582298600298" target="_blank" title="Facebook">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
-          </a>
-          <a href="https://linkedin.com/in/babyjaneseno" target="_blank" title="LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="mailto:enaj.freelance@gmail.com" title="Email">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </a>
-        </div>
-        <div class="footer-copy">
-          <p>© 2025 Baby Jane Seño</p>
-          <p style="margin-top:4px;">All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
+        // Pricing Toggle
+        document.querySelectorAll('.toggle-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
 
-  <script>
-    // ── FILTER ──
-    function filterCards(category, btn) {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-      const cards = document.querySelectorAll('.card');
-      cards.forEach(card => {
-        const cat = card.dataset.category;
-        if (category === 'all' || cat === category) {
-          delete card.dataset.hidden;
-          card.style.display = '';
-        } else {
-          card.dataset.hidden = true;
-          card.style.display = 'none';
-        }
-      });
-
-      // Hide section headers if all cards in that section are hidden
-      document.querySelectorAll('.work-section').forEach(section => {
-        const visible = [...section.querySelectorAll('.card')].some(c => c.style.display !== 'none');
-        section.style.display = visible ? '' : 'none';
-      });
-    }
-
-    // ── SCROLL REVEAL ──
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          const cards = entry.target.querySelectorAll('.card');
-          cards.forEach((card, idx) => {
-            setTimeout(() => card.classList.add('visible'), idx * 100);
-          });
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.work-grid').forEach(grid => observer.observe(grid));
-
-    // Also observe about section
-    const aboutObs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.animation = 'fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both';
-          aboutObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    // ── MOBILE MENU ──
-    function toggleMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('open');
-    }
-
-    // Close menu on outside click
-    document.addEventListener('click', (e) => {
-      const menu = document.getElementById('mobileMenu');
-      const hamburger = document.getElementById('hamburger');
-      if (menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)) {
-        menu.classList.remove('open');
-      }
-    });
-
-    // ── ACTIVE NAV ON SCROLL ──
-    const sections = document.querySelectorAll('[id]');
-    window.addEventListener('scroll', () => {
-      let current = '';
-      sections.forEach(section => {
-        if (window.scrollY >= section.offsetTop - 120) current = section.id;
-      });
-      document.querySelectorAll('.nav-links a:not(.nav-hire)').forEach(a => {
-        a.classList.toggle('active-scroll', a.getAttribute('href') === `#${current}`);
-      });
-    }, { passive: true });
-  </script>
+        // Add glow effect to cards on hover
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.boxShadow = '0 0 60px rgba(79, 142, 247, 0.3)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.boxShadow = '0 0 30px rgba(79, 142, 247, 0.1)';
+            });
+        });
+    </script>
 </body>
 </html>
